@@ -4,11 +4,11 @@ const bcrypt = require('bcrypt');
 
 const userSchema = new Schema(
     {
-        first_name: {
+        first_name: { // @TODO: Prefer to use firstName. Also this should match your typeDef for user in your grapQL typeDef
             type: String,
             required: true,
         },
-        last_name: {
+        last_name: { // @TODO: Prefer to use lastName. Also this should match your typeDef for user in your grapQL typeDef
             type: String,
             required: true,
         },
@@ -27,7 +27,7 @@ const userSchema = new Schema(
             type: String,
             required: true,
         },
-        blogPosts: [
+        blogPosts: [ // This is camelCased here (which is correct). So we update first and last name fields to be consistent
             {
                 type: Schema.Types.ObjectId,
                 ref: 'BlogPost',
