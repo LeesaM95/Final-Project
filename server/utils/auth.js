@@ -2,7 +2,7 @@ const { GraphQLError } = require('graphql');
 const jwt = require('jsonwebtoken');
 
 
-const secret = 'mysecretsshhhhh'; // @TODO: Please update this secret so that others from the class can't hack your JWT. Should use process.env.JWT_SECRET
+const secret = 'mysecretsshhhhh';
 const expiration = '2h';
 
 module.exports = {
