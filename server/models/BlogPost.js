@@ -1,4 +1,4 @@
-const { Schema } = require('mongoose');
+const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat')
 
 const blogPostSchema = new Schema({
@@ -14,7 +14,7 @@ const blogPostSchema = new Schema({
         required: 'blog area cannot be empty!',
         trim: true,
     },
-    username: {
+    blogAuthor: {
         type: String,
         required: true,
         trim: true,
