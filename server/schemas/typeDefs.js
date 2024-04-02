@@ -6,13 +6,19 @@ type User {
     username: String
     email: String
     password: String
-    comments: [Comment]!
+    blogPost: [blogPost!]
 }
-type Comment {
+type BlogPost {
     _id: ID
-    commentText: String
-    commentAuthor: String
-    createdAt: String
+    blogTitle: String
+    blogText: String
+    blogAuthor: String
+    createdAt: Date
+    comments: [
+        commentText: String,
+        commentAuthor: String,
+        createdAt: Date
+    ]
 }
 type Auth {
     token: ID!
@@ -22,7 +28,8 @@ type Auth {
 type Query {
     users: [User]
     user(username: String!): User
-    comment(commentId: ID!): Comment
+    blogPost(username: String): [BlogPost]
+    blogPost(blogPostId: ID!): BlogPost
     me: User
 }
 
@@ -31,6 +38,10 @@ type Mutation {
     updateUser(firstname: String, lastname: String, username: String, email: String, password: String): Auth
     deleteUser(userId: ID!): User
     login(username: String!, password: String!): Auth
+    addPost(blogText: String!): BlogPost
+    addComment(blogPostId: ID!, commentText: String!): BlogPost
+    removeBlogPost(blogPostId: ID!): BlogPost
+    removeComment(blogPostId: ID!, commentId: ID!): BlogPost
     
 }`
 

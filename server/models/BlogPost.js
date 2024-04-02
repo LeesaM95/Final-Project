@@ -14,7 +14,7 @@ const blogPostSchema = new Schema({
         required: 'blog area cannot be empty!',
         trim: true,
     },
-    username: {
+    blogAuthor: {
         type: String,
         required: true,
         trim: true,
