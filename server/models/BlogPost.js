@@ -2,19 +2,19 @@ const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat')
 
 const blogPostSchema = new Schema({
-    blogTitle: {
+    blogTitle: { // @TODO: Change to just use 'title', 'blog' is redundant
         type: String,
         required: 'Title cannot be empty!',
         minlength: 1,
         maxlength: 280,
         trim: true,
     },
-    blogText: {
+    blogText: { // @TODO: Change to just use 'text', 'blog' is redundant
         type: String,
         required: 'blog area cannot be empty!',
         trim: true,
     },
-    blogAuthor: {
+    blogAuthor: { // @TODO: Change to just use 'author', 'blog' is redundant
         type: String,
         required: true,
         trim: true,
@@ -26,13 +26,13 @@ const blogPostSchema = new Schema({
     },
     comments: [
         {
-            commentText: {
+            commentText: { // @TODO: Change to just 'text' 'comment' is redundant
                 type: String,
                 required: true,
                 minlength: 1,
                 maxlength: 300,
             },
-            commentAuthor: {
+            commentAuthor: { // @TODO: Change to just 'text' 'comment' is redundant
                 type: String,
                 required: true,
             },

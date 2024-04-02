@@ -1,12 +1,13 @@
 const typeDefs = `
 type User {
     _id: ID
-    firstname: String
-    lastname: String
+    firstname: String // @TODO: use firstName
+    lastname: String // @TODO: use lastName
     username: String
     email: String
     password: String
 }
+
 
 type Auth {
     token: ID!
@@ -18,7 +19,7 @@ type Query {
 }
 
 type Mutation {
-    addUser(firstname: String!, lastname: String!, username: String!, email: String!, password: String!): Auth
+    addUser(firstName: String!, lastName: String!, username: String!, email: String!, password: String!): Auth
     
 }`
 
