@@ -1,23 +1,21 @@
-import React from "react";
-
-import styled from 'styled-components';
+// import { useQuery } from '@apollo/client';
 
 const Home = () => {
-    const MyColStyle = styled div`
-        float: left;
-        width: 50%;
-    `
-    const MyRowStyle = styled div`
-        content: "";
-        display: table;
-        clear: both;
-    `
+  
     return (
-    <div style={MyRowStyle}>
-        <div style={MyColStyle}></div>
-        <div style={MyColStyle}></div>
-    </div>
-    )
-}
-
-export default Home;
+      <main>
+        <div className="flex-row justify-center">
+          <div
+            className="col-12 col-md-10 mb-3 p-3"
+            style={{ border: '1px dotted #1a1a1a' }}
+          >
+          </div>
+          <div className="col-12 col-md-8 mb-3">
+            Hello World!
+          </div>
+        </div>
+      </main>
+    );
+  };
+  
+  export default Home;
