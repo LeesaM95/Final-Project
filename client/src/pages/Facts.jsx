@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client'
+// import { useQuery } from '@apollo/client'
 import { getImage } from '../utils/utils'
 
 const Facts = () => {
@@ -7,3 +7,5 @@ const Facts = () => {
         <main></main>
     )
 }
+
+export default Facts;

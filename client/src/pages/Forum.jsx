@@ -1,5 +1,5 @@
-import { useQuery } from '@apollo/client'
-import { getImage } from '../utils/utils'
+// import { useQuery } from '@apollo/client'
+// import { getImage } from '../utils/utils'
 
 const Forum = () => {
     
@@ -7,3 +7,4 @@ const Forum = () => {
         <main></main>
     )
 }
+export default Forum
