@@ -8,7 +8,7 @@ const Home = () => {
     return (
         <main>
             <div style={{display: "flex", width: "100%"}}>
-                <div style={{flex: 1, marginRight: "100px", textAlign: "left", width: "100%", fontSize: "35px"}}>
+                <div style={{flex: 1, marginRight: "100px", textAlign: "left", width: "100%", fontSize: "35px", color: 'white'}}>
                 Recently the International Union for Conservation of Nature upgraded wild pandas' status from 'endangered' to 'vulnerable'. There are just over 1800 pandas in the wild. Pandas live primarily in temperate forests in the mountains of southwest China. Pandas consume between 26-84 lbs of bamboo daily. Pandas are threatened by humans whose infrastructure developments divide panda populations. This prevents pandas from finding new bamboo sources and mates. Deforestation is another threat to pandas, as this forest loss reduces access to the bamboo pandas need to survive.
                 </div>
                 <div style={{flex: 1, marginRight: "-500px"}}>

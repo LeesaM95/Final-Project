@@ -5,6 +5,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import Home from './pages/Home.jsx';
+import Comments from './pages/Comments.jsx';
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,9 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      }, {
+        path: '/comments',
+        element: <Comments />
       }
     ]
   }
