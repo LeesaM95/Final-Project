@@ -10,6 +10,9 @@ import styled from 'styled-components'
 
 // Styled Components
 const Form = styled.form`
+        display: flex;
+        justify-content: center;
+        flex-flow: wrap row;
         background-color: #F7F6FE;
         height: 800px;
         width: 900px;
@@ -18,13 +21,27 @@ const Form = styled.form`
         border: solid 5px #455A30;
         `
 const Input = styled.input`
+        align-self: center;
         height: 30px;
         width: 350px;
         background-color: white;
         border: solid 3px #0C1117;
-        font-family: monospace,
+        font-family: monospace;
         font-size: 12px;
-        color: #01050A;`
+        color: #01050A;
+        padding-left: 5px;
+        margin: 10px;`
+
+const Button = styled.button`
+        height: 30px;
+        width: 75px;
+        border: solid 3px #455A30;
+        background-color: 0C1117;
+        font-family: monospace;
+        font-size: 12px;
+        color: white;
+        align-self: center;
+        margin: 10px;`
 
 const SignUp = () => {
     const [formState, setFormState] = useState({
@@ -109,11 +126,11 @@ const SignUp = () => {
                                     type="password"
                                     value={formState.password}
                                     onChange={handleChange}></Input>
-                                <button
+                                <Button
                                     style={{ cursor: 'pointer' }}
                                     type="submit">
                                     Submit
-                                </button>
+                                </Button>
                             </Form>
                         )}
 
