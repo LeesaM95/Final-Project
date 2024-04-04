@@ -7,3 +7,5 @@ const DeleteAccount = () => {
         <main></main>
     )
 }
+
+export default DeleteAccount;
