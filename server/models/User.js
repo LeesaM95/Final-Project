@@ -4,11 +4,11 @@ const bcrypt = require('bcrypt');
 
 const userSchema = new Schema(
     {
-        first_name: { // @TODO: Prefer to use firstName. Also this should match your typeDef for user in your grapQL typeDef
+        firstName: {
             type: String,
             required: true,
         },
-        last_name: { // @TODO: Prefer to use lastName. Also this should match your typeDef for user in your grapQL typeDef
+        lastName: {
             type: String,
             required: true,
         },
