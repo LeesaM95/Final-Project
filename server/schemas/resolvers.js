@@ -4,25 +4,24 @@ const { signToken, AuthenticationError } = require('../utils/auth')
 const resolvers = {
     Query: {
         users: async () => {
-            return User.find({})
+            return User.find().populate('posts')
         },
-        // user: async (parent, {username}) => {
-        //     return User.findOne({ username })
-        // },
-        // blogPosts: async (parent, {blogPostId}) => {
-        //     const params = username ? { username } : {};
-        //     return BlogPost.find(params).sort({ createdAt: -1});
-        // },
-        // blogPost: async (parent, {blogPostId}) => {
-        //     return BlogPost.findOne({ _id: blogPostId});
-        // },
-        // me: async (parent, args, context) => {
-        //     if (context.user) {
-        //       return User.findOne({ _id: context.user._id }).populate('thoughts');
-        //     }
-        //     throw AuthenticationError;
-        //   },
-
+        user: async (parent, { username }) => {
+          return User.findOne({ username }).populate('posts')
+        },
+        posts: async (parent, { username }) => {
+          const params = username ? { username } : {};
+          return BlogPost.find(params).sort({ createdAt: -1 });
+        },
+        post: async (parent, { blogPostId }) => {
+          return BlogPost.findOne({ _id: blogPostId})
+        },
+        me: async (parent, args, context) => {
+          if (context.user) {
+            return User.findOne({ _id: context.user._id }).populate('posts')
+          }
+          throw AuthenticationError;
+        },
     },
     Mutation: {
         addUser: async (parent, { username, email, password }) => {
@@ -49,15 +48,15 @@ const resolvers = {
           return User.findOneAndDelete({ _id: userId })
         },
 
-        addPost: async (parent, { blogTitle, blogText, blogAuthor }) => {
-          return BlogPost.create({blogTitle, blogText, blogAuthor})
+        addPost: async (parent, { title, text, author }) => {
+          return BlogPost.create({title, text, author})
         },
 
-        addComment: async (parent, { blogPostId, commentText }) => {
+        addComment: async (parent, { blogPostId, text }) => {
           return BlogPost.findOneAndUpdate(
             {_id: blogPostId},
             {
-              $addToSet: { comments: { commentText } },
+              $addToSet: { comments: { text } },
             },
             {
               new: true,
@@ -69,7 +68,7 @@ const resolvers = {
         removePost: async (parent, { blogPostId }) => {
           return BlogPost.findOneAndDelete({ _id: blogPostId});
         },
-        
+
         removeComment: async (parent, { blogPostId, commentId }) => {
           return BlogPost.findOneAndUpdate(
             { _id: blogPostId },
