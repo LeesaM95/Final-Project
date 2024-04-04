@@ -14,7 +14,6 @@ type BlogPost {
     title: String
     text: String
     author: String
-    createdAt: String
     comments: [Comment]!
 }
 
@@ -22,7 +21,6 @@ type Comment {
     _id: ID
     text: String
     author: String
-    createdAt: String
 }
 
 type Auth {
@@ -42,7 +40,7 @@ type Mutation {
     addUser(firstName: String!, lastName: String!, username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     deleteUser(user: ID!): User
-    addPost(title: String!, text: String!, author: String!, CreatedAt: Date!): BlogPost
+    addPost(title: String!, text: String!, author: String!): BlogPost
     addComment(
         blogPostId: ID!
         text: String!
