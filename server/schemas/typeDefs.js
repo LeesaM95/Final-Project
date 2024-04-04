@@ -38,7 +38,7 @@ type Query {
 }
 
 type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
+    addUser(firstName: String!, lastName: String!, username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     deleteUser(user: ID!): User
     addPost(title: String!, text: String!, author: String!, CreatedAt: Date!): BlogPost
@@ -48,7 +48,7 @@ type Mutation {
         author: String!
     ): BlogPost
     removePost(blogPostId: ID!): BlogPost
-    removeComment(blogPostId: ID!, commentId: ID!): BlogPost
+    removeComment(blogPostId: ID!, commentId: ID!): BlogPost    
 }`
 
 

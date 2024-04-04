@@ -1,20 +1,21 @@
 // import { useQuery } from '@apollo/client';
+import styled from 'styled-components';
+import { getImage } from "../utils/utils";
+import panda2 from "../assets/panda2.jpg";
 
 const Home = () => {
   
     return (
-      <main>
-        <div className="flex-row justify-center">
-          <div
-            className="col-12 col-md-10 mb-3 p-3"
-            style={{ border: '1px dotted #1a1a1a' }}
-          >
-          </div>
-          <div className="col-12 col-md-8 mb-3">
-            Hello World!
-          </div>
-        </div>
-      </main>
+        <main>
+            <div style={{display: "flex", width: "100%"}}>
+                <div style={{flex: 1, marginRight: "100px", textAlign: "left", width: "100%", fontSize: "35px"}}>
+                Recently the International Union for Conservation of Nature upgraded wild pandas' status from 'endangered' to 'vulnerable'. There are just over 1800 pandas in the wild. Pandas live primarily in temperate forests in the mountains of southwest China. Pandas consume between 26-84 lbs of bamboo daily. Pandas are threatened by humans whose infrastructure developments divide panda populations. This prevents pandas from finding new bamboo sources and mates. Deforestation is another threat to pandas, as this forest loss reduces access to the bamboo pandas need to survive.
+                </div>
+                <div style={{flex: 1, marginRight: "-500px"}}>
+                    <img src={panda2} alt="panda-picture"/>
+                </div>
+            </div>
+        </main>
     );
   };
   
