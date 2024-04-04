@@ -27,7 +27,7 @@ const userSchema = new Schema(
             type: String,
             required: true,
         },
-        blogPosts: [
+        blogPosts: [ // This is camelCased here (which is correct). So we update first and last name fields to be consistent
             {
                 type: Schema.Types.ObjectId,
                 ref: 'BlogPost',

@@ -48,7 +48,7 @@ type Mutation {
         author: String!
     ): BlogPost
     removePost(blogPostId: ID!): BlogPost
-    removeComment(blogPostId: ID!, commentId: ID!): BlogPost
+    removeComment(blogPostId: ID!, commentId: ID!): BlogPost    
 }`
 
 
