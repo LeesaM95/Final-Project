@@ -8,7 +8,7 @@ export const QUERY_USER = gql`
       email
       comments {
         _id
-        commentText
+        text
         createdAt
       }
     }
@@ -19,8 +19,8 @@ export const QUERY_COMMENTS = gql`
   query getComments {
     comments {
       _id
-      commentText
-      commentAuthor
+      text
+      author
       createdAt
     }
   }
@@ -30,13 +30,13 @@ export const QUERY_SINGLE_COMMENT = gql`
   query getSingleComment($commentId: ID!) {
     comment(commentId: $commentId) {
       _id
-      commentText
-      commentAuthor
+      text
+      author
       createdAt
       comments {
         _id
-        commentText
-        commentAuthor
+        text
+        author
         createdAt
       }
     }
@@ -51,8 +51,8 @@ export const QUERY_ME = gql`
       email
       comments {
         _id
-        commentText
-        commentAuthor
+        text
+        author
         createdAt
       }
     }
