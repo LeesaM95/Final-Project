@@ -1,0 +1,133 @@
+/*header and footer; should be fine to copy paste*/
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    background-color: black;
+    height:100px;
+    font-family: fantasy;
+}
+
+footer {
+    background-color: black;
+    height: 100px;
+    font-family: fantasy;
+    color:white;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+
+@media (max-width:800px) { header {
+    background-color: brown;
+    }
+}
+
+@media (max-width:800px) { footer {
+    background-color: brown;
+    }
+}
+
+#name {
+    color:white;
+    font-size: 65px;
+    padding-left: 10px;
+}
+
+.navbar {
+    float:right;
+    padding-bottom: 20px;
+    padding-right: 10px;
+}
+
+
+a {
+    text-decoration: none;
+    color: white;
+    padding-left: 5px;
+}
+
+a:hover {
+    color:lightgrey;
+}
+
+a:active {
+    color:gray;
+}
+
+
+/*content styling*/
+
+.content {
+    overflow:hidden;
+}
+
+
+.left {
+    width:24%;
+    float:left;
+    padding-left: 7%;
+    padding-right: 3%;
+    padding-top: 120px;
+}
+
+.left img {
+   width:100%;
+   height:auto;
+}
+
+.left div {
+    border: 2px solid black;
+}
+
+.center {
+    width:24%;
+    float:left;
+    padding-left: 4%;
+    padding-right:3%;
+    padding-top: 120px;
+}
+
+.center img {
+    width:100%;
+    height:auto;
+ }
+
+.center div {
+    border: 2px solid black;
+}
+
+.right {
+    width: 24%;
+    float:left;
+    padding-left: 4%;
+    padding-right: 7%;
+    padding-top: 123px;
+}
+
+.right img {
+    width:100%;
+    height:auto;
+ }
+
+.right div {
+    border: 2px solid black;
+
+}
+
+.fact1 {
+    height:145px;
+}
+
+.fact2 {
+    height: 215px;
+}
+
+.text {
+    padding: 10px;
+}
+
