@@ -2,19 +2,21 @@ const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat')
 
 const blogPostSchema = new Schema({
-    blogTitle: {
+     title: {
         type: String,
         required: 'Title cannot be empty!',
         minlength: 1,
         maxlength: 280,
         trim: true,
     },
-    blogText: {
+
+    text: {
         type: String,
         required: 'blog area cannot be empty!',
         trim: true,
     },
-    blogAuthor: {
+
+    author: {
         type: String,
         required: true,
         trim: true,
@@ -26,13 +28,13 @@ const blogPostSchema = new Schema({
     },
     comments: [
         {
-            commentText: {
+            text: {
                 type: String,
                 required: true,
                 minlength: 1,
                 maxlength: 300,
             },
-            commentAuthor: {
+            author: {
                 type: String,
                 required: true,
             },
