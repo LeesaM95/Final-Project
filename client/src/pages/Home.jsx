@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 // import { useQuery } from '@apollo/client';
 // import styled from 'styled-components';
 // import { getImage } from "../utils/utils";
