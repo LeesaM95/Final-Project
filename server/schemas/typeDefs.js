@@ -48,7 +48,11 @@ type Mutation {
     ): BlogPost
     removePost(blogPostId: ID!): BlogPost
     removeComment(blogPostId: ID!, commentId: ID!): BlogPost    
+    updateUsername(username: String): Auth
+    updateEmail(email: String): Auth
+    updatePassword(email: String, password: String): Auth
 }`
 
 
 module.exports = typeDefs;
+// add a typedef to update user, pass, and email
