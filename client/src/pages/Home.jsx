@@ -1,6 +1,6 @@
 // import { useQuery } from '@apollo/client';
-import styled from 'styled-components';
-import { getImage } from "../utils/utils";
+// import styled from 'styled-components';
+// import { getImage } from "../utils/utils";
 import panda2 from "../assets/panda2.jpg";
 
 const Home = () => {
