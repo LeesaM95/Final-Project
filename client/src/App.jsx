@@ -7,7 +7,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { Outlet } from 'react-router-dom';
-import Nav from './components/Header';
+import  Nav  from './components/Nav';
 
 
 const httpLink = createHttpLink({
