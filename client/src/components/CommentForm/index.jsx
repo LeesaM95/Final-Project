@@ -8,7 +8,7 @@ import { QUERY_COMMENTS, QUERY_ME } from '../../utils/queries';
 import Auth from '../../utils/auth';
 
 const CommentForm = () => {
-  const [commentText, setCommentText] = useState('');
+  const [text, setText] = useState('');
 
   const [characterCount, setCharacterCount] = useState(0);
 
@@ -28,12 +28,12 @@ const CommentForm = () => {
     try {
       const { data } = await addComment({
         variables: {
-          commentText,
-          commentAuthor: Auth.getProfile().data.username,
+          text,
+          author: Auth.getProfile().data.username,
         },
       });
 
-      setCommentText('');
+      setText('');
     } catch (err) {
       console.error(err);
     }
@@ -42,8 +42,8 @@ const CommentForm = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === 'commentText' && value.length <= 280) {
-      setCommentText(value);
+    if (name === 'text' && value.length <= 280) {
+      setText(value);
       setCharacterCount(value.length);
     }
   };
@@ -67,7 +67,7 @@ const CommentForm = () => {
           >
             <div className="col-12 col-lg-9">
               <textarea
-                name="commentText"
+                name="text"
                 placeholder="Here's a new comment..."
                 value={commentText}
                 className="form-input w-100"
