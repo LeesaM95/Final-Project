@@ -1,6 +1,8 @@
 import decode from 'jwt-decode';
 
+
 class Auth {
+
   getProfile() {
     return decode(this.getToken());
   }
@@ -38,4 +40,6 @@ class Auth {
   }
 }
 
+
 export default new Auth;
+
