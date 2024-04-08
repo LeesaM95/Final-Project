@@ -1,4 +1,4 @@
-const {User, BlogPost} = require('../models')
+const { User, BlogPost, Comment } = require('../models')
 const { signToken, AuthenticationError } = require('../utils/auth')
 
 const resolvers = {
@@ -22,10 +22,13 @@ const resolvers = {
           }
           throw AuthenticationError;
         },
+        comment: async (parent, args) => {
+            return Comment.findOne({ _id })
+        },
     },
     Mutation: {
-        addUser: async (parent, { username, email, password }) => {
-            const user = await User.create({ username, email, password });
+        addUser: async (parent, { firstName, lastName, username, email, password }) => {
+            const user = await User.create({ firstName, lastName, username, email, password });
             const token = signToken(user);
             return { token, user };
           },

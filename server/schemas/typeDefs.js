@@ -21,6 +21,7 @@ type Comment {
     _id: ID
     text: String
     author: String
+    createdAt: String
 }
 
 type Auth {
@@ -34,6 +35,7 @@ type Query {
     posts(username: String): [BlogPost]
     post(blogPostId: ID!): BlogPost
     me: User
+    comment: Comment
 }
 
 type Mutation {
