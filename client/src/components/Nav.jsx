@@ -11,7 +11,6 @@ export default function Nav() {
             <Link key={4} to="/facts"></Link>,
             <Link key={5} to="/forum"></Link>,
             <Link key={6} to="/account"></Link>,
-            <Link key={7} to="/deleteaccount"></Link>
         ]}></Navbar>
     )
 }
