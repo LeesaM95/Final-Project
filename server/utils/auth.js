@@ -1,9 +1,13 @@
 const { GraphQLError } = require('graphql');
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 
 
-const secret = 'kcp7tS$:15mQ+&5q';
+const secret = `${process.env.JWT_SECRET}`;
+// in .env file: JWT_SECRET = kcp7tS$:15mQ+&5q
+console.log("variable");
+console.log(secret);
 const expiration = '2h';
 
 module.exports = {
@@ -13,6 +17,7 @@ module.exports = {
     },
   }),
   authMiddleware: function ({ req }) {
+    console.log("auth middleware");
 
     // allows token to be sent via req.body, req.query, or headers
     let token = req.body.token || req.query.token || req.headers.authorization;

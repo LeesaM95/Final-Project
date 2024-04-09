@@ -69,7 +69,7 @@ const CommentForm = () => {
               <textarea
                 name="text"
                 placeholder="Here's a new comment..."
-                value={commentText}
+                value={text}
                 className="form-input w-100"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
