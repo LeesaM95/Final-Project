@@ -8,7 +8,8 @@ const styles = {
         fontSize: '24px',
         fontFamily: 'monospace',
         color: '#8E9A7A',
-        height: '150px'
+        height: '150px',
+        flexDirection: 'row-reverse'
     }
 }
 
