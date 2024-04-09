@@ -7,13 +7,14 @@ import { QUERY_COMMENTS, QUERY_ME } from '../../utils/queries';
 
 import Auth from '../../utils/auth';
 
+import panda3 from "../../assets/panda3.jpg";
+
 const CommentForm = () => {
   const [text, setText] = useState('');
 
   const [characterCount, setCharacterCount] = useState(0);
 
-  const [addComment, { error }] = useMutation
-  (ADD_COMMENT, {
+  const [addComment, { error }] = useMutation(ADD_COMMENT, {
     refetchQueries: [
       QUERY_COMMENTS,
       'getComments',
@@ -51,6 +52,7 @@ const CommentForm = () => {
   return (
     <div>
       <h3>Pandas on your mind?</h3>
+      <img src={panda3}/>
 
       {Auth.loggedIn() ? (
         <>

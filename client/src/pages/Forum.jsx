@@ -1,12 +1,13 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import CommentList from '../components/CommentList';
+import PostForm from '../components/PostForm';
 import CommentForm from '../components/CommentForm';
 
-import { QUERY_COMMENTS } from '../utils/queries';
+import { QUERY_COMMENTS, QUERY_POSTS } from '../utils/queries';
 
 import styled from 'styled-components';
+import PostList from '../components/PostList';
 
 const Form = styled.form`
         display: flex;
@@ -45,7 +46,7 @@ const Button = styled.button`
 const Forum = () => {
     const { loading, data } = useQuery(QUERY_COMMENTS);
     const comments = data?.comments || [];
-  
+    
     return (
     <main>
       <div className="flex-row justify-center">
@@ -59,10 +60,11 @@ const Forum = () => {
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <CommentList
+            <PostForm
               comments={comments}
               title="Blog Posts"
-            />
+            />,
+            <PostList />
           )}
         </div>
       </div>

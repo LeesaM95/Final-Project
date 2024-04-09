@@ -20,9 +20,9 @@ font-style: bold;`
 
 
 const PostList = ({ posts, title}) => {
-    if(!posts.length) {
-        return <h3> No Posts Yet</h3>
-    }
+    // if(!posts.length) {
+    //     return <h3> No Posts Yet</h3>
+    // }
 
     return (
         <div>
