@@ -5,6 +5,7 @@ import { useQuery } from '@apollo/client';
 import PostList from '../components/PostList'
 
 import CommentForm from '../components/CommentForm';
+import CommentList from '../components/CommentList';
 
 import { QUERY_COMMENTS, QUERY_POSTS } from '../utils/queries';
 

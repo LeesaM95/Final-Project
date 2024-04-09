@@ -8,6 +8,8 @@ import {ADD_POST} from '../../utils/mutations';
 import {QUERY_POSTS } from '../../utils/queries';
 import styled from 'styled-components';
 
+import panda3 from '../../assets/panda3.jpg';
+
 const Form = styled.form`
         display: flex;
         justify-content: center;
@@ -73,31 +75,45 @@ const PostForm = () => {
     }
   };
 
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name] : value,
+    })
+    console.log("updated state", formState)
+  }
+
   return (
     <div>
       <h3>Shoot out a Panda Thought</h3>
-      <Form
+      <img src={panda3} />
+      <form
       onSubmit={handleFormSubmit}>
         <div>
-          <TextArea
+          <input
           name="title"
           placeholder="Post Title"
-          value={formState.title}>
-          </TextArea>
+          value={formState.title}
+          onChange={handleChange}>
+          </input>
         </div>
         <div>
           <TextArea
           name="text"
           placeholder="Here's a thought..."
-          value={formState.text}>
+          value={formState.text}
+          onChange={handleChange}>
           </TextArea>
         </div>
         <div>
-          <TextArea
+          <input
           name="author"
           placeholder="Username"
-          value={formState.author}>
-          </TextArea>
+          value={formState.author}
+          onChange={handleChange}>
+          </input>
         </div>
         <div>
           <Button type="submit">
@@ -109,7 +125,7 @@ const PostForm = () => {
             Something went wrong...
           </div>
         )}
-      </Form>
+      </form>
     </div>
   )
 }
