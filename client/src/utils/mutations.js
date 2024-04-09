@@ -62,4 +62,13 @@ mutation updatePassword($email: String!, $password: String!) {
     email
     password
   }
-}`;
+}`
+
+export const DELETE_ACCOUNT = gql`
+mutation deleteAccount($username: String!, $password: String!) {
+  deleteAccount(username: $username, password: $password) {
+    _id
+    email
+    password
+  }
+}` ;
