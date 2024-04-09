@@ -14,7 +14,7 @@ const styles = {
 
  function Navbar ({ links}) {
     return (
-        <nav style={styles.nabvarStyles} className="navbar">
+        <nav style={styles.navbarStyles} className="navbar">
             <div>
                 <div>
                     <ul>

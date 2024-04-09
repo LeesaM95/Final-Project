@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { UPDATE_USERNAME, UPDATE_EMAIL, UPDATE_PASSWORD, DELETE_ACCOUNT } from '../../utils/mutations';
+import { UPDATE_USERNAME, UPDATE_EMAIL, UPDATE_PASSWORD, DELETE_ACCOUNT } from '../utils/mutations';
 import styled from 'styled-components';
 
 const Form = styled.form`
@@ -38,7 +38,7 @@ const Button = styled.button`
         align-self: center;
         margin: 10px;`
 
-const AccountForm = () => {
+const AccountSettings = () => {
     const [username, setUserName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -113,4 +113,4 @@ const AccountForm = () => {
     
 }
 
-export default AccountForm;
+export default AccountSettings;
