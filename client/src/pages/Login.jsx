@@ -17,7 +17,7 @@ const Form = styled.form`
         margin: 20px;
         border: solid 5px #455A30;
         `
-        const Input = styled.input`
+const Input = styled.input`
         align-self: center;
         height: 30px;
         width: 350px;
