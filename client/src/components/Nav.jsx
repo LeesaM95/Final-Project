@@ -33,6 +33,7 @@ function Nav() {
         }
     }
     return (
+
         <Navbar>
             links={[
                 <Link key={1} to="/">Home |</Link>,
