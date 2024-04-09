@@ -2,7 +2,41 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { UPDATE_USERNAME, UPDATE_EMAIL, UPDATE_PASSWORD, DELETE_ACCOUNT } from '../../utils/mutations';
+import styled from 'styled-components';
 
+const Form = styled.form`
+        display: flex;
+        justify-content: center;
+        flex-flow: wrap row;
+        background-color: #F7F6FE;
+        height: 800px;
+        width: 900px;
+        padding: 20px;
+        margin: 20px;
+        border: solid 5px #455A30;
+        `
+const Input = styled.input`
+        align-self: center;
+        height: 30px;
+        width: 350px;
+        background-color: white;
+        border: solid 3px #0C1117;
+        font-family: monospace;
+        font-size: 12px;
+        color: #01050A;
+        padding-left: 5px;
+        margin: 10px;`
+
+const Button = styled.button`
+        height: 30px;
+        width: 75px;
+        border: solid 3px #455A30;
+        background-color: 0C1117;
+        font-family: monospace;
+        font-size: 12px;
+        color: white;
+        align-self: center;
+        margin: 10px;`
 
 const AccountForm = () => {
     const [username, setUserName] = useState('');
@@ -40,40 +74,40 @@ const AccountForm = () => {
     return (
         <div>
             <h3>Account Settings</h3>
-            <form onSubmit={handleFormSubmit}>
+            <Form onSubmit={handleFormSubmit}>
                 <div>
                     <div></div>
                     <span>
-                        <input value={username} 
+                        <Input value={username} 
                         onChange={(event) => setUserName(event.target.value)} />
                     </span>
                 </div>
                 <div>
                     <div></div>
                     <span>
-                        <input value={email} 
+                        <Input value={email} 
                         onChange={(event) => setEmail(event.target.value)} />
                     </span>
                 </div>
                 <div>
                     <div></div>
                     <span>
-                        <input value={password} 
+                        <Input value={password} 
                         onChange={(event) => setPassword(event.target.value)} />
                     </span>
                 </div>
                 <div>
-                    <button type="submit">
+                    <Button type="submit">
                         Update Profile
-                    </button>
+                    </Button>
                 </div>
                 <div>
-                    <button value={account}
+                    <Button value={account}
                     onClick={(event) => setAccount(event.target.value)}>
                         Delete Account
-                    </button>
+                    </Button>
                 </div>
-            </form>
+            </Form>
         </div>
     )
     
