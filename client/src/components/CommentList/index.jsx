@@ -21,8 +21,8 @@ const Form = styled.form`
         `
 const TextArea = styled.textarea`
         align-self: center;
-        height: 500px;
-        width: 700px;
+        height: 400px;
+        width: 500px;
         background-color: white;
         border: solid 3px #0C1117;
         font-family: monospace;
