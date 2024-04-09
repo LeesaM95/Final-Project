@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client';
 import { Navigate, useParams } from 'react-router-dom';
 
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
-import { AccountSettings } from '../components/AccountSettings/AccountSettings';
+import AccountSettings from '../components/AccountSettings.jsx';
 import Auth from '../utils/auth';
 import styled from 'styled-components'
 
