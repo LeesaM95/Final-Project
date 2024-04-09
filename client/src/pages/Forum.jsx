@@ -1,8 +1,12 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
+
 import PostForm from '../components/PostForm';
 import PostList from '../components/PostList'
+
+import CommentList from '../components/CommentList';
+
 import CommentForm from '../components/CommentForm';
 
 import { QUERY_COMMENTS } from '../utils/queries';
@@ -60,7 +64,7 @@ const Forum = () => {
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <PostForm
+            <CommentList
               comments={comments}
               title="Blog Posts"
             />
