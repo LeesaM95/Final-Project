@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import CommentForm from '../CommentForm';
 
 const CommentList = ({
   comments,
@@ -20,7 +21,8 @@ const CommentList = ({
               {showUsername ? (
                 <Link
                   className="text-light"
-                  to={`/profiles/${comment.commentAuthor}`}
+                //   to={`/profiles/${comment.commentAuthor}`}
+                    to={`../../pages/Account/${comment.commentAuthor}`}
                 >
                   {comment.commentAuthor} <br />
                   <span style={{ fontSize: '1rem' }}>

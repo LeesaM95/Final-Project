@@ -5,7 +5,7 @@ require('dotenv').config();
 
 
 const secret = `${process.env.JWT_SECRET}`;
-// kcp7tS$:15mQ+&5q
+// in .env file: JWT_SECRET = kcp7tS$:15mQ+&5q
 console.log("variable");
 console.log(secret);
 const expiration = '2h';
