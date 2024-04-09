@@ -48,8 +48,7 @@ const PostForm = () => {
     author: '',
   });
 
-  const [addPost, { error}] = useMutation
-  (ADD_POST, {
+  const [addPost, { error}] = useMutation (ADD_POST, {
     refetchQueries: [
       QUERY_POSTS,
       'getPosts'
