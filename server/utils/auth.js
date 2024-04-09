@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 
 
 
-const secret = process.env.JWT_SECRET;
+const secret = 'kcp7tS$:15mQ+&5q';
 const expiration = '2h';
 
 module.exports = {

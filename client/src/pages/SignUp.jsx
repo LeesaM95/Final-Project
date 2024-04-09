@@ -94,14 +94,14 @@ const SignUp = () => {
                                 <Input
                                     className="form-input"
                                     placeholder="first name"
-                                    name="first name"
+                                    name="firstName"
                                     type="text"
                                     value={formState.firstName}
                                     onChange={handleChange}></Input>
                                 <Input
                                     className="form-input"
                                     placeholder="last name"
-                                    name="last name"
+                                    name="lastName"
                                     type="text"
                                     value={formState.lastName}
                                     onChange={handleChange}></Input>
