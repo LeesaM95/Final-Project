@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 
-import {ADD_POST} from '../../utils/mutations';
-import {QUERY_POSTS } from '../../utils/queries';
+import {ADD_POST} from '../utils/mutations';
+import {QUERY_POSTS } from '../utils/queries';
 import styled from 'styled-components';
 
 const Form = styled.form`

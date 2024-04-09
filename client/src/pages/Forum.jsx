@@ -1,74 +1,64 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import PostForm from '../components/PostForm';
 import PostList from '../components/PostList'
 import CommentForm from '../components/CommentForm';
+import CommentList from '../components/CommentList'
 
-import { QUERY_COMMENTS } from '../utils/queries';
+import { QUERY_COMMENTS, QUERY_POSTS } from '../utils/queries';
 
 import styled from 'styled-components';
 
-const Form = styled.form`
-        display: flex;
-        justify-content: center;
-        flex-flow: wrap row;
-        background-color: #F7F6FE;
-        height: 800px;
-        width: 900px;
-        padding: 20px;
-        margin: 20px;
-        border: solid 5px #455A30;
-        `
-        const Input = styled.input`
-        align-self: center;
-        height: 30px;
-        width: 350px;
-        background-color: white;
-        border: solid 3px #0C1117;
-        font-family: monospace;
-        font-size: 12px;
-        color: #01050A;
-        padding-left: 5px;
-        margin: 10px;`
+const H3 = styled.h3`
+font-family: monospace;
+font-size: 16px;
+color: #01050a;`
 
-const Button = styled.button`
-        height: 30px;
-        width: 75px;
-        border: solid 3px #455A30;
-        background-color: 0C1117;
-        font-family: monospace;
-        font-size: 12px;
-        color: white;
-        align-self: center;
-        margin: 10px;`
+const H4 = styled.h4`
+font-family: monospace;
+font-size: 12px;
+color: #0c1117;`
+
+const Span = styled.span`
+font-family: monospace;
+font-size: 14px;
+color: #455a30;
+font-style: bold;`
 
 const Forum = () => {
-    const { loading, data } = useQuery(QUERY_COMMENTS);
-    const comments = data?.comments || [];
-  
-    return (
-    <main>
-      <div className="flex-row justify-center">
-        <div
-          className="col-12 col-md-10 mb-3 p-3"
-          style={{ border: '1px dotted #1a1a1a' }}
-        >
-          <CommentForm />
+  const { postId } = useParams();
+  const { commentId } = useParams();
+  const { loading, data } = useQuery(QUERY_POSTS, QUERY_COMMENTS, {
+    variables: {
+      postId: postId,
+      commentId: commentId,
+    }
+  });
+  const post = data?.posts || [];
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
+  return (
+    
+    <div>
+      <H3>{post.title}</H3>
+      <H4>Created by <Span>{post.author}</Span></H4>
+      <br />
+        <div>
+          {post.post?.length > 0 && <PostList posts={post.postId} />}
         </div>
-        <div className="col-12 col-md-8 mb-3">
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            <PostForm
-              comments={comments}
-              title="Blog Posts"
-            />
-          )}
+        <div>
+          Posted on {post.createdAt}
+        </div>
+        <div>
+          <CommentList comments={post.comments} />
+        </div>
+        <div>
+          <CommentForm postId={post._id} />
         </div>
       </div>
-    </main>
-    );
+  )
 };
 
 export default Forum;
