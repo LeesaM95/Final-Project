@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client';
 import { Navigate, useParams } from 'react-router-dom';
 
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
-
+import { AccountSettings } from '../components/AccountSettings/AccountSettings';
 import Auth from '../utils/auth';
 import styled from 'styled-components'
 
@@ -18,28 +18,6 @@ const Form = styled.form`
         margin: 20px;
         border: solid 5px #455A30;
         `
-const Input = styled.input`
-        align-self: center;
-        height: 30px;
-        width: 350px;
-        background-color: white;
-        border: solid 3px #0C1117;
-        font-family: monospace;
-        font-size: 12px;
-        color: #01050A;
-        padding-left: 5px;
-        margin: 10px;`
-
-const Button = styled.button`
-        height: 30px;
-        width: 75px;
-        border: solid 3px #455A30;
-        background-color: 0C1117;
-        font-family: monospace;
-        font-size: 12px;
-        color: white;
-        align-self: center;
-        margin: 10px;`
 
 const Account = () => {
     const { findUsername } = useParams();
@@ -69,12 +47,9 @@ const Account = () => {
         <div>
             <h2>Account Settings</h2>
             <Form>
-                <div>Username <span><Input>Change Username</Input></span></div>
-                <div>Email <span><Input>Update Email</Input></span></div>
-                <div>Password <span><Input>Change Password</Input></span></div>
-                <div>Re-Enter Password <Input></Input></div>
-                <Button>Submit Changes</Button>
-                <Button>Delete Account</Button>
+                <div>
+                    {AccountSettings}
+                </div>
             </Form>
 
         </div>
