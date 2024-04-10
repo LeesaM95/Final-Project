@@ -140,7 +140,7 @@ const PostForm = () => {
           <li key={post._id}>
             <h3>{post.title}</h3>
             <p>{post.text}</p>
-            <h4>{post.author}</h4>
+            <h4>Post by: {post.author}</h4>
           </li>
         ))}
       </ul>
