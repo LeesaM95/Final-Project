@@ -33,16 +33,15 @@ const CommentForm = ({ postId }) => {
         <h3>Pandas on your mind?</h3>
           <>
             <form
-              className="flex-row justify-center justify-space-between-md align-center"
+              
               onSubmit={handleFormSubmit}
             >
-              <div className="col-12 col-lg-9">
+              <div >
                 <textarea
                   name="text"
                   placeholder="Here's a new comment..."
                   value={text}
-                  className="form-input w-100"
-                  style={{ lineHeight: '1.5', resize: 'vertical' }}
+                  
                 ></textarea>
               </div>
   

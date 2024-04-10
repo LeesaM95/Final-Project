@@ -1,7 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-
 import PostList from '../components/PostList'
 
 import CommentForm from '../components/CommentForm';
