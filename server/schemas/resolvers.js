@@ -14,7 +14,10 @@ const resolvers = {
         },
         posts: async (parent, { username }) => {
           const params = username ? { username } : {};
-          return BlogPost.find(params).sort({ createdAt: -1 });
+          console.log("Query posts")
+          const blog = await BlogPost.find(params).sort({ createdAt: -1 });
+          console.log(blog)
+          return blog;
         },
         post: async (parent, { blogPostId }) => {
           return BlogPost.findOne({ _id: blogPostId})
