@@ -68,7 +68,7 @@ const PostForm = () => {
         variables: {
           title,
           text,
-          author
+          author,
         }
       })
       setFormState({
@@ -93,7 +93,6 @@ const PostForm = () => {
   }
 
  if (Auth.loggedIn()) {
-  // const { loading, error, data } = useQuery(QUERY_ME);
   return (
     <div>
       <h3>Shoot out a Panda Thought</h3>
@@ -124,9 +123,6 @@ const PostForm = () => {
             onChange={handleChange}>
           </input>
         </div>
-        {/* <div>
-          Username: {username}
-        </div> */}
         <div>
           <Button type="submit">
             Add Post
@@ -148,16 +144,6 @@ const PostForm = () => {
       You need to be logged in to post. Please{' '}
       <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
     </p>
-    <h2 style={{fontSize: "55px"}}>Posts</h2>
-    <ul>
-      {data.posts.map(post => (
-        <li key={post._id}>
-          <h3 style={{fontSize: "35px"}}>{post.title}</h3>
-          <p>{post.text}</p>
-          <h4>Post by: {post.author}</h4>
-        </li>
-      ))}
-    </ul>
   </div>
   );
 }
