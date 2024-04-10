@@ -1,15 +1,11 @@
 
-
 /* eslint-disable no-unused-vars */
-import React from 'react';
 import { useState } from 'react';
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 
 import {ADD_POST} from '../../utils/mutations';
 import {QUERY_POSTS } from '../../utils/queries';
 import styled from 'styled-components';
-
-import panda3 from '../../assets/panda3.jpg';
 
 const Form = styled.form`
         display: flex;
@@ -24,8 +20,8 @@ const Form = styled.form`
         `
 const TextArea = styled.textarea`
         align-self: center;
-        height: 400px;
-        width: 500px;
+        height: 500px;
+        width: 700px;
         background-color: white;
         border: solid 3px #0C1117;
         font-family: monospace;
@@ -76,46 +72,31 @@ const PostForm = () => {
     }
   };
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-
-    setFormState({
-      ...formState,
-      [name] : value,
-    })
-    console.log("updated state", formState)
-
-  }
-
   return (
     <div>
       <h3>Shoot out a Panda Thought</h3>
-      <img src={panda3} />
-      <form
+      <Form
       onSubmit={handleFormSubmit}>
         <div>
-          <input
+          <TextArea
           name="title"
           placeholder="Post Title"
-          value={formState.title}
-          onChange={handleChange}>
-          </input>
+          value={formState.title}>
+          </TextArea>
         </div>
         <div>
           <TextArea
           name="text"
           placeholder="Here's a thought..."
-          value={formState.text}
-          onChange={handleChange}>
+          value={formState.text}>
           </TextArea>
         </div>
         <div>
-          <input
+          <TextArea
           name="author"
           placeholder="Username"
-          value={formState.author}
-          onChange={handleChange}>
-          </input>
+          value={formState.author}>
+          </TextArea>
         </div>
         <div>
           <Button type="submit">
@@ -127,11 +108,9 @@ const PostForm = () => {
             Something went wrong...
           </div>
         )}
-      </form>
+      </Form>
     </div>
   )
 }
 
 export default PostForm;
-
-
