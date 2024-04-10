@@ -5,18 +5,17 @@ import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import styled from 'styled-components';
 import Auth from '../utils/auth';
+import Home from '../pages/Home';
 
-const Form = styled.form`
-        display: flex;
-        justify-content: center;
-        flex-flow: wrap row;
-        background-color: #F7F6FE;
-        height: 800px;
-        width: 900px;
-        padding: 20px;
-        margin: 20px;
-        border: solid 5px #455A30;
-        `
+const FormBackground = styled.div`
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      height: 700;
+      width: 900;
+      background-color: #F7F6FE;
+      border: solid 3px #8e9a7a;
+      `
 const Input = styled.input`
         align-self: center;
         height: 30px;
@@ -26,101 +25,81 @@ const Input = styled.input`
         font-family: monospace;
         font-size: 12px;
         color: #01050A;
-        padding-left: 5px;
-        margin: 10px;`
-
-const Button = styled.button`
-        height: 30px;
-        width: 75px;
-        border: solid 3px #455A30;
-        background-color: 0C1117;
-        font-family: monospace;
-        font-size: 12px;
-        color: white;
-        align-self: center;
         margin: 10px;`
 
 
-const Login = (props) => {
-    const [formState, setFormState] = useState({ email: '', password: '' });
+
+
+function Login(props) {
+  const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    console.log(formState);
+    try {
+      const mutationResponse = await login({
+        variables: { email: formState.email, password: formState.password },
+      });
+
+      const token = (mutationResponse.data.login.token);
+      Auth.login(token);
+    } catch (e) {
+      console.log(e);
+    }
+
+  };
   const handleChange = (event) => {
     const { name, value } = event.target;
-
     setFormState({
-        ...formState,
-        [name]: value,
+      ...formState,
+      [name]: value,
     });
+  };
 
-    const handleFormSubmit = async (event) => {
-        event.preventDefault();
-        console.log(formState);
-        try {
-          const { data } = await login({
-            variables: { ...formState },
-          });
-    
-          Auth.login(data.login.token);
-        } catch (e) {
-          console.error(e);
-        }
 
-        setFormState({
-            email: '',
-            password: '',
-          });
-        };
 
-        return(
-            <main>
-                <div>
-                    <div>
-                        <h4>Login</h4>
-                        <div>
-                        {data ? (
-              <p>
-                Success! You may now head{' '}
-                <Link to="/">back to the homepage.</Link>
-              </p>
-            ) : (
-              <Form onSubmit={handleFormSubmit}>
-                <Input
-                  className="form-input"
-                  placeholder="Your email"
-                  name="email"
-                  type="email"
-                  value={formState.email}
-                  onChange={handleChange}
-                />
-                <Input
-                  className="form-input"
-                  placeholder="******"
-                  name="password"
-                  type="password"
-                  value={formState.password}
-                  onChange={handleChange}
-                />
-                <Button
-                  style={{ cursor: 'pointer' }}
-                  type="submit"
-                >
-                  Submit
-                </Button>
-              </Form>
-            )}
-
-            {error && (
-              <div>
-                {error.message}
-              </div>
-            )}
-                        </div>
-                    </div>
-                </div>
-            </main>
-        )
-  }
+  return (
+    <>
+      <FormBackground>
+        <div style={{ alignContent: "center", fontFamily: "monospace", fontSize: "20px", margin: "15px" }}>
+          <Link to="/signup">Sign Up Here</Link>
+        </div>
+        <h3>Login</h3>
+    {data ? (
+      <p>Success! You may now head{' '}
+      <Link to="/">back to the Homepage!</Link></p>
+    ) : (
+        <form onSubmit={handleFormSubmit}>
+          <div>
+            <label htmlFor="email">Email Address:</label>
+            <Input
+              placeholder="youremail@test.com"
+              name="email"
+              type="email"
+              id="email"
+              onChange={handleChange} />
+          </div>
+          <div>
+            <label htmlFor="pwd">Password: </label>
+            <Input
+              placeholder="*******"
+              name="password"
+              id="pwd"
+              onChange={handleChange} />
+          </div>
+          {error ? (
+            <div>
+              <p> Email or Password Incorrect!</p>
+            </div>
+          ) : null}
+          <div>
+            <button type="submit" onSubmit={Home}>Submit</button>
+          </div>
+        </form>
+        )}
+      </FormBackground>
+    </>
+  )
 }
-
 export default Login;

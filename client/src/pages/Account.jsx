@@ -20,22 +20,22 @@ const Form = styled.form`
         `
 
 const Account = () => {
-    const { findUsername } = useParams();
-    const { loading, data } = useQuery(
-       findUsername ? QUERY_USER : QUERY_ME,
+    const { findEmail } = useParams();
+    var { loading, data } = useQuery(
+       findEmail ? QUERY_USER : QUERY_ME,
         {
-            variables: { username: username}
+            variables: { email: email}
         }
     );
-    const username = data?.me || data?.username || {};
+    var email = data?.me || data?.email || {};
 
-    if (Auth.loggedIn() && Auth.getUser().data._id === findUsername) {
+    if (Auth.loggedIn() && Auth.getProfile().data._id === findEmail) {
         return <Navigate to="/me" />
     }
     if(loading) {
         return <div>Loading...</div>
     }
-    if(!username?.name) {
+    if(!email?.name) {
         return (
             <h4>
                 You need to be logged in to see your Account Settings Page. Please use the navigation links above to sign up or login!

@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { UPDATE_USERNAME, UPDATE_EMAIL, UPDATE_PASSWORD, DELETE_ACCOUNT } from '../utils/mutations';
 import styled from 'styled-components';
+import Auth from '../utils/auth'
 
 const Form = styled.form`
         display: flex;
@@ -71,45 +72,53 @@ const AccountSettings = () => {
         }
     };
 
-    return (
-        <div>
-            <h3>Account Settings</h3>
-            <Form onSubmit={handleFormSubmit}>
-                <div>
-                    <div></div>
-                    <span>
-                        <Input value={username} 
-                        onChange={(event) => setUserName(event.target.value)} />
-                    </span>
-                </div>
-                <div>
-                    <div></div>
-                    <span>
-                        <Input value={email} 
-                        onChange={(event) => setEmail(event.target.value)} />
-                    </span>
-                </div>
-                <div>
-                    <div></div>
-                    <span>
-                        <Input value={password} 
-                        onChange={(event) => setPassword(event.target.value)} />
-                    </span>
-                </div>
-                <div>
-                    <Button type="submit">
-                        Update Profile
-                    </Button>
-                </div>
-                <div>
-                    <Button value={account}
-                    onClick={(event) => setAccount(event.target.value)}>
-                        Delete Account
-                    </Button>
-                </div>
-            </Form>
-        </div>
-    )
+    if (Auth.loggedIn()) {
+        return (
+            <div>
+                <h3>Account Settings</h3>
+                <Form onSubmit={handleFormSubmit}>
+                    <div>
+                        <div></div>
+                        <span>
+                            <Input value={username} 
+                            onChange={(event) => setUserName(event.target.value)} />
+                        </span>
+                    </div>
+                    <div>
+                        <div></div>
+                        <span>
+                            <Input value={email} 
+                            onChange={(event) => setEmail(event.target.value)} />
+                        </span>
+                    </div>
+                    <div>
+                        <div></div>
+                        <span>
+                            <Input value={password} 
+                            onChange={(event) => setPassword(event.target.value)} />
+                        </span>
+                    </div>
+                    <div>
+                        <Button type="submit">
+                            Update Profile
+                        </Button>
+                    </div>
+                    <div>
+                        <Button value={account}
+                        onClick={(event) => setAccount(event.target.value)}>
+                            Delete Account
+                        </Button>
+                    </div>
+                </Form>
+            </div>
+        )
+    } else {
+        return (
+            <h4>
+                You need to be logged in to see your Account Settings Page. Please use the navigation links above to sign up or login!
+            </h4>
+        );
+    }
     
 }
 

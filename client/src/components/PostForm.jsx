@@ -31,8 +31,8 @@ const TextArea = styled.textarea`
         margin: 10px;`
 
 const Button = styled.button`
-        height: 30px;
-        width: 75px;
+        height: auto;
+        width: auto;
         border: solid 3px #455A30;
         background-color: 0C1117;
         font-family: monospace;
