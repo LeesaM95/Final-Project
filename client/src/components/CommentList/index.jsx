@@ -1,8 +1,9 @@
 
 
 /* eslint-disable no-unused-vars */
+import React from 'react';
 import { useState } from 'react';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 
 import {ADD_POST} from '../../utils/mutations';
 import {QUERY_POSTS } from '../../utils/queries';
@@ -83,6 +84,7 @@ const PostForm = () => {
       [name] : value,
     })
     console.log("updated state", formState)
+
   }
 
   return (
@@ -131,4 +133,5 @@ const PostForm = () => {
 }
 
 export default PostForm;
+
 
