@@ -5,8 +5,8 @@ import React from 'react';
 import { useState } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 
-import {ADD_POST} from '../../utils/mutations';
-import {QUERY_POSTS } from '../../utils/queries';
+import { ADD_POST } from '../../utils/mutations';
+import { QUERY_POSTS } from '../../utils/queries';
 import styled from 'styled-components';
 
 import panda3 from '../../assets/panda3.jpg';
@@ -52,19 +52,25 @@ const PostForm = () => {
     author: '',
   });
 
-  const [addPost, { error}] = useMutation (ADD_POST, {
+  const [addPost, { error }] = useMutation(ADD_POST, {
     refetchQueries: [
       QUERY_POSTS,
       'getPosts'
     ]
   });
 
+
+  const {loading, data} = useQuery(QUERY_POSTS);
+  console.log(data);
+  if (loading) return <p>Loading...</p>;
+  // if (error) return <p>Error: {error.message}</p>;
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
       const { data } = addPost({
-        variables: {...formState},
+        variables: { ...formState },
       });
       setFormState({
         title: '',
@@ -81,10 +87,9 @@ const PostForm = () => {
 
     setFormState({
       ...formState,
-      [name] : value,
+      [name]: value,
     })
     console.log("updated state", formState)
-
   }
 
   return (
@@ -92,42 +97,54 @@ const PostForm = () => {
       <h3>Shoot out a Panda Thought</h3>
       <img src={panda3} />
       <form
-      onSubmit={handleFormSubmit}>
+        onSubmit={handleFormSubmit}>
         <div>
           <input
-          name="title"
-          placeholder="Post Title"
-          value={formState.title}
-          onChange={handleChange}>
+            name="title"
+            placeholder="Post Title"
+            value={formState.title}
+            onChange={handleChange}>
           </input>
         </div>
         <div>
           <TextArea
-          name="text"
-          placeholder="Here's a thought..."
-          value={formState.text}
-          onChange={handleChange}>
+            name="text"
+            placeholder="Here's a thought..."
+            value={formState.text}
+            onChange={handleChange}>
           </TextArea>
         </div>
         <div>
           <input
-          name="author"
-          placeholder="Username"
-          value={formState.author}
-          onChange={handleChange}>
+            name="author"
+            placeholder="Username"
+            value={formState.author}
+            onChange={handleChange}>
           </input>
         </div>
         <div>
           <Button type="submit">
-              Add Post
+            Add Post
           </Button>
         </div>
-        { error && (
+        {error && (
           <div>
             Something went wrong...
           </div>
         )}
       </form>
+      <div>
+      <h2>Posts</h2>
+      <ul>
+        {data.posts.map(post => (
+          <li key={post._id}>
+            <h3>{post.title}</h3>
+            <p>{post.text}</p>
+            <h4>{post.author}</h4>
+          </li>
+        ))}
+      </ul>
+    </div>
     </div>
   )
 }
