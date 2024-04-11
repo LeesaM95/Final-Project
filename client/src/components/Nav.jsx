@@ -28,7 +28,6 @@ function Nav() {
                     <Link key={1} to="/"> Home | </Link>
                     <Link key={2} to="/facts">Facts | </Link>
                     <Link key={3} to="/forum">Forum | </Link>
-                    <Link key={4} to="/account">Account | </Link>
                     <Link key={5} to="/logout">Logout</Link>
                     </div>
                 
@@ -44,9 +43,8 @@ function Nav() {
                     <Link key={1} to="/"> Home | </Link>
                     <Link key={2} to="/facts">Facts | </Link>
                     <Link key={3} to="/forum">Forum | </Link>
-                    <Link key={4} to="/account">Account | </Link>
-                    <Link key={5} to="/login">Login | </Link>
-                    <Link key={6} to="/signup">Signup </Link>
+                    <Link key={4} to="/login">Login | </Link>
+                    <Link key={5} to="/signup">Signup </Link>
                     </div>
                 
             </nav>
