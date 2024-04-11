@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 import { useQuery } from '@apollo/client';
-import { Navigate, useParams } from 'react-router-dom';
+// import {useState} from 'react'
 
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import AccountSettings from '../components/AccountSettings.jsx';
-import Auth from '../utils/auth';
+// import Auth from '../utils/auth';
 // import styled from 'styled-components'
 
 // // Styled Components
@@ -22,20 +22,21 @@ import Auth from '../utils/auth';
 
     
 
-const Account = () => {
+const Account =  () => {
     // const { findEmail } = useParams();
-    var { loading, data } = useQuery(QUERY_ME);
-    console.log(data)
-
-    const [username, setUserName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [account, setAccount] = useState('');
+    var { loading, data } =  useQuery(QUERY_ME);
+    
+   
+  
+    
     
     
     if(loading) {
         return <div>Loading...</div>
     }
+   
+    const props = data
+    console.log(props)
     if(!data?.me.email) {
         return (
             <h4>
@@ -47,12 +48,9 @@ const Account = () => {
     return (
         <div>
             <h2>Account Settings</h2>
-            <form>
                 <div>
-                    <AccountSettings />
+                    <AccountSettings props={props}/>
                 </div>
-            </form>
-
         </div>
     )
 }

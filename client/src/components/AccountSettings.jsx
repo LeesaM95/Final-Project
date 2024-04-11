@@ -39,62 +39,57 @@ const Button = styled.button`
         align-self: center;
         margin: 10px;`
 
-const AccountSettings = () => {
-    const [username, setUserName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [account, setAccount] = useState('');
+const AccountSettings = (props) => {
+    console.log(props)
+    // const [username, setUserName] = useState('');
+    // const [email, setEmail] = useState('');
+    // const [password, setPassword] = useState('');
+    // const [account, setAccount] = useState('');
 
-    const [setNewUsername] = useMutation(UPDATE_USERNAME);
-    const [setNewEmail] = useMutation(UPDATE_EMAIL);
-    const [setNewPassword] = useMutation(UPDATE_PASSWORD);
-    const [deleteAccount] = useMutation(DELETE_ACCOUNT);
+    // const [setNewUsername] = useMutation(UPDATE_USERNAME);
+    // const [setNewEmail] = useMutation(UPDATE_EMAIL);
+    // const [setNewPassword] = useMutation(UPDATE_PASSWORD);
 
-    const handleFormSubmit = async (event) => {
-        event.preventDefault();
 
-        try {
-            const { email } = await setNewEmail({
-                variables: {email}
-            })
-            const { username } = await setNewUsername({
-                variables: { username }
-            })
-            const { password } = await setNewPassword({
-                variables: {password}
-            })
-            const { account } = await deleteAccount({
-                variables: { account, email, password}
-            })
-            window.location.reload();
-        } catch (err) {
-            console.error(err)
-        }
-    };
+    // const handleFormSubmit = async (event) => {
+    //     event.preventDefault();
+
+    //     try {
+    //         const { email } = await setNewEmail({
+    //             variables: {email}
+    //         })
+    //         // const { username } = await setNewUsername({
+    //         //     variables: { username }
+    //         // })
+    //         const { password } = await setNewPassword({
+    //             variables: {password}
+    //         })
+    //         // const { user } = await deleteAccount({
+    //         //     variables: {email, password}
+    //         // })
+    //         window.location.reload();
+    //     } catch (err) {
+    //         console.error(err)
+    //     }
+    // };
 
     if (Auth.loggedIn()) {
         return (
             <div>
                 <h3>Account Settings</h3>
-                <Form onSubmit={handleFormSubmit}>
+                
+                    <form>
                     <div>
-                        <div></div>
+                        <div>Email</div>
                         <span>
-                            <Input value={username} 
-                            onChange={(event) => setUserName(event.target.value)} />
-                        </span>
-                    </div>
-                    <div>
-                        <div></div>
-                        <span>
-                            <Input value={email} 
+                            <Input value={props.props.me.email}
                             onChange={(event) => setEmail(event.target.value)} />
                         </span>
                     </div>
                     <div>
-                        <div></div>
+                        <div>Password</div>
                         <span>
-                            <Input value={password} 
+                            <Input value={''} 
                             onChange={(event) => setPassword(event.target.value)} />
                         </span>
                     </div>
@@ -104,12 +99,12 @@ const AccountSettings = () => {
                         </Button>
                     </div>
                     <div>
-                        <Button value={account}
-                        onClick={(event) => setAccount(event.target.value)}>
+                        {/* <Button value={account}
+                        onClick={(event)}>
                             Delete Account
-                        </Button>
+                        </Button> */}
                     </div>
-                </Form>
+                </form>
             </div>
         )
     } else {
