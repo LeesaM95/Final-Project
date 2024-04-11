@@ -45,38 +45,4 @@ mutation addPost($title: String!, $text: String!, $author: String!) {
     text
     author
   }
-}`
-
-export const UPDATE_USERNAME = gql`
-mutation updateUsername($username: String!) {
-  updateUsername(username: $username) {
-    _id
-    username
-  }
-}`;
-
-export const UPDATE_EMAIL = gql`
-mutation updateEmail($email: String!) {
-  updateEmail(email: $email) {
-    _id
-    email
-  }
-}`;
-
-export const UPDATE_PASSWORD = gql`
-mutation updatePassword($email: String!, $password: String!) {
-  updatePassword(password: $password) {
-    _id
-    email
-    password
-  }
-}`
-
-export const DELETE_ACCOUNT = gql`
-mutation deleteAccount($username: String!, $password: String!) {
-  deleteAccount(username: $username, password: $password) {
-    _id
-    email
-    password
-  }
 }` ;

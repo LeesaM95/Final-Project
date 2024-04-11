@@ -52,9 +52,6 @@ type Mutation {
     ): BlogPost
     removePost(blogPostId: ID!): BlogPost
     removeComment(blogPostId: ID!, commentId: ID!): BlogPost    
-    updateUsername(username: String): Auth
-    updateEmail(email: String): Auth
-    updatePassword(email: String, password: String): Auth
 }`
 
 

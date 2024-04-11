@@ -88,22 +88,6 @@ const resolvers = {
       )
     },
 
-    updateUsername: async (parent, args, context) => {
-      if (context.user) {
-        return User.findOneAndUpdate({username: context.user.username})
-      }
-    },
-    updateEmail: async (parent, args, context) => {
-      if (context.user) {
-        return User.findOneAndUpdate({email: context.user.email})
-      }
-    },
-    updatePassword: async (parent, args, context) => {
-      if (context.user) {
-        return User.findOneAndUpdate({password: context.user.password})
-      }
-    }
-
   },
 };
 
