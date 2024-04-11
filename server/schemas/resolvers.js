@@ -13,9 +13,9 @@ const resolvers = {
           return User.findOne({ username }).populate('posts')
         },
         posts: async (parent, { username }) => {
-          const params = username ? { username } : {};
+          // const params = username ? { username } : {};
           console.log("Query posts")
-          const blog = await BlogPost.find(params).sort({ createdAt: -1 });
+          const blog = await BlogPost.find().sort({ createdAt: -1 });
           console.log(blog)
           return blog;
         },
@@ -24,7 +24,7 @@ const resolvers = {
         },
         me: async (parent, args, context) => {
           if (context.user) {
-            return User.findOne({ _id: context.user._id }).populate('posts')
+            return User.findOne({ _id: context.user._id }).populate('blogPosts')
           }
           throw AuthenticationError;
         },

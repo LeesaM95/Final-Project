@@ -47,6 +47,7 @@ query getPosts {
     title
     text
     author
+    createdAt
   }
 }`
 
@@ -69,14 +70,15 @@ query getPost($postId: ID!) {
 export const QUERY_ME = gql`
   query me {
     me {
-      _id
-      username
       email
-      comments {
+      firstName
+      lastName
+      BlogPosts {
         _id
-        text
         author
         createdAt
+        text
+        title
       }
     }
   }

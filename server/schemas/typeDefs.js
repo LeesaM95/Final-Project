@@ -7,6 +7,7 @@ type User {
     username: String
     email: String
     password: String
+    BlogPosts: [BlogPost]
 }
 
 type BlogPost {
@@ -14,6 +15,7 @@ type BlogPost {
     title: String
     text: String
     author: String
+    createdAt: String
     comments: [Comment]!
 }
 
@@ -32,7 +34,7 @@ type Auth {
 type Query {
     users: [User]
     user(username: String!): User
-    posts(username: String): [BlogPost]
+    posts: [BlogPost]
     post(blogPostId: ID!): BlogPost
     me: User
     comment: Comment
