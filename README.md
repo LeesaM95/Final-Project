@@ -24,7 +24,7 @@
 
   ## Credits
 
-  To build this project we used style-components and made heavy use of google. Additionally we received help from a tutor, the TA and the instructor. We also relied on the WWF for information regarding pandas.
+  To build this project we used style-components, MongoDB, Mongoose Bcrypt, Apollo, GraphQL, Vite, and made heavy use of google and StackOverflow. Additionally we received help from a tutor, the TA and the instructor. We also relied on the WWF for information regarding pandas.
 
   ## License
 
