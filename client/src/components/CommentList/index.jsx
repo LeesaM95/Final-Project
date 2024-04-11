@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import Auth from '../../utils/auth'
-import Link from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 const CommentList = ({ comments = []}) => {
   if(!comments.length) {

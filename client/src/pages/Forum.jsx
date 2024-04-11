@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
 import PostList from '../components/PostList'
+import PostForm from '../components/PostForm';
 
 import CommentForm from '../components/CommentForm';
 import CommentList from '../components/CommentList';
@@ -46,6 +47,9 @@ const Forum = () => {
       <H3>{post.title}</H3>
       <H4>Created by <Span>{post.author}</Span></H4>
       <br />
+        <div>
+          <PostForm />
+        </div>
         <div>
           {post.post?.length > 0 && <PostList posts={post.postId} />}
         </div>

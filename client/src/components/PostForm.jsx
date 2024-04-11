@@ -1,49 +1,16 @@
 /* eslint-disable no-undef */
-
 /* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 
 import {ADD_POST} from '../utils/mutations';
 import {QUERY_POSTS, QUERY_ME } from '../utils/queries';
-import styled from 'styled-components';
+
 
 import Auth from '../utils/auth';
 import {Link} from 'react-router-dom';
 
-// const Form = styled.form`
-//         display: flex;
-//         justify-content: center;
-//         flex-flow: wrap row;
-//         background-color: #F7F6FE;
-//         height: 800px;
-//         width: 900px;
-//         padding: 20px;
-//         margin: 20px;
-//         border: solid 5px #455A30;
-//         `
-const TextArea = styled.textarea`
-        align-self: center;
-        height: 500px;
-        width: 700px;
-        background-color: white;
-        border: solid 3px #0C1117;
-        font-family: monospace;
-        font-size: 12px;
-        color: #01050A;
-        padding-left: 5px;
-        margin: 10px;`
 
-const Button = styled.button`
-        height: auto;
-        width: auto;
-        border: solid 3px #455A30;
-        background-color: 0C1117;
-        font-family: monospace;
-        font-size: 12px;
-        color: white;
-        align-self: center;
-        margin: 10px;`
 
 const PostForm = () => {
   const [formState, setFormState] = useState({
@@ -84,12 +51,26 @@ const PostForm = () => {
   }
 
   const handleChange = (event) => {
+    console.log(event.target.name);
     const { name, value } = event.target;
-    if (name === formState.text && formState.author && formState.title) {
-      setFormState({...formState, [name]: value})
-    } else if (name !== formState.text && formState.title && formState.author) {
-      console.error({message: `Fields cannot be blank!`})
+
+    if (name === "title") {
+      setFormState({...formState, ["title"]: value})
     }
+
+    if (name === "text") {
+      setFormState({...formState, ["text"]: value})
+    }
+
+    if (name === "author") {
+      setFormState({ ...formState, ["author"]: value})
+    }
+    console.log(formState)
+    // if (name === formState.text && formState.author && formState.title) {
+    //   setFormState({...formState, [name]: value})
+    // } else if (name !== formState.text && formState.title && formState.author) {
+    //   console.error({message: `Fields cannot be blank!`})
+    // }
   }
 
  if (Auth.loggedIn()) {
@@ -108,12 +89,12 @@ const PostForm = () => {
           </input>
         </div>
         <div>
-          <TextArea
+          <textarea
             name="text"
             placeholder="Here's a thought..."
             value={formState.text}
             onChange={handleChange}>
-          </TextArea>
+          </textarea>
         </div>
         <div>
           <input
@@ -124,9 +105,9 @@ const PostForm = () => {
           </input>
         </div>
         <div>
-          <Button type="submit">
+          <button type="submit">
             Add Post
-          </Button>
+          </button>
         </div>
         {error && (
           <div>
